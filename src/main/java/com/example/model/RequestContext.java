@@ -1,8 +1,11 @@
 package com.example.model;
 
+import javax.inject.Named;
+
 import io.micronaut.runtime.http.scope.RequestScope;
 
 @RequestScope
+@Named("requestContext")
 public class RequestContext {
     private String httpMethod;
     private int httpStatus;

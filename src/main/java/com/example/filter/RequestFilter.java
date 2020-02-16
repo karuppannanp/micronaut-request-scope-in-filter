@@ -15,17 +15,17 @@ import com.example.model.RequestContext;
 @Filter("/**")
 public class RequestFilter extends OncePerRequestHttpServerFilter {
 
-	@Inject private RequestContext requestContext;
+    @Inject
+    private RequestContext requestContext;
 
-	@Override
-	protected Publisher<MutableHttpResponse<?>> doFilterOnce(
-			HttpRequest<?> request, ServerFilterChain chain) {
-		requestContext.setUri(request.getPath());
-		return chain.proceed(request);
-	}
-	
-	@Override
-	public int getOrder() {
+    @Override
+    protected Publisher<MutableHttpResponse<?>> doFilterOnce(HttpRequest<?> request, ServerFilterChain chain) {
+        requestContext.setUri(request.getPath());
+        return chain.proceed(request);
+    }
+
+    @Override
+    public int getOrder() {
         return Ordered.LOWEST_PRECEDENCE;
     }
 }
